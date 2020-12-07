@@ -5,7 +5,7 @@ library(haven)
 library(stargazer)
 library(caret)
 
-bias_data<-read_sav('dat.sav')
+bias_data<-read_sav('data/dat.sav')
 factor_cols = c('Race', 'gender', 'political', 'fieldofstudy', 'citizenship','edu')
 us_data<- bias_data%>%
   rename(Weekday = weekday, Race = Race_White_Asian_Black_Other, gender = gender01,
