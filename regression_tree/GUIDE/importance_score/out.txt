@@ -1,0 +1,379 @@
+             GGG   U   U  I  DDDD   EEEE
+            G   G  U   U  I  D   D  E
+            G      U   U  I  D   D  E
+            G  GG  U   U  I  D   D  EEE
+            G   G  U   U  I  D   D  E
+            G   G  U   U  I  D   D  E
+             GGG    UUU   I  DDDD   EEEE
+   
+ GUIDE Classification and Regression Trees and Forests
+ Version 36.0 (Build date: September 23, 2020)     
+ Compiled with GFortran 5.0 on macOS High Sierra 10.13.6               
+ Copyright (c) 1997-2029 Wei-Yin Loh. All rights reserved.
+ This software is based upon work supported by the U.S. Army Research Office,
+ the National Science Foundation and the National Institutes of Health.
+  
+ This job was started on 11/29/20 at 18:23
+  
+ Classification tree
+ No pruning
+ Data description file: first.dsc
+ Training sample file: first.rdata
+ Missing value code: NA
+ Records in data file start on line 2
+ 7 N variables changed to S
+ Warning: B variables changed to C
+ D variable is USAScore
+ Number of records in data file: 2365
+ Length of longest entry in data file: 21
+ Missing values found in D variable
+ Missing values found among categorical variables
+ Separate categories will be created for missing categorical variables
+ Missing values found among non-categorical variables
+ Number of classes: 3
+ Training sample class proportions of D variable USAScore:
+     Class  #Cases     Proportion
+ COVID         252     0.11185087
+ No_Bias      1946     0.86373724
+ Non_COVID      55     0.02441190
+  
+      Total  #cases w/   #missing
+     #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var
+       2365        112       2365        0        0        0        7
+     #P-var   #M-var   #B-var   #C-var   #I-var
+          1        0        0        4        0
+ Number of cases used for training: 2253
+ Number of split variables: 11
+ Number of cases excluded due to 0 weight or missing D: 112
+  
+ Importance scoring of variables
+ Simple node models
+ Equal priors
+ Unit misclassification costs
+ Univariate split highest priority
+ Interaction splits 2nd priority; no linear splits
+ Split values for N and S variables based on exhaustive search
+ Maximum number of split levels: 4
+ Minimum node sample size: 22
+ Starting 300 permutations to standardize means of importance scores
+ Finished permutations to standardize means of importance scores
+ FieldOfStudy     6.7547
+ Race             6.4495
+ Gender           4.8445
+ Political        4.8055
+ 95 and 99% thresholds for unadjusted importance scores =   30.679  51.204
+  
+ Note: final tree is shorter due to pruning of sibling nodes with same predicted values.
+ Structure of final tree. Each terminal node is marked with a T.
+  
+ Node cost is node misclassification cost divided by number of training cases
+        Node    Total    Train    Predicted        Node    Split          Interacting
+       label    cases    cases    class            cost    variables      variable
+           1     2253     2253    COVID          6.351E-01 UKScore 
+           2      181      181    Non_COVID      3.732E-01 Weekday 
+           4T      91       91    Non_COVID      3.067E-01 Weekday 
+           5       90       90    Non_COVID      4.616E-01 Edu 
+          10T      46       46    Non_COVID      2.440E-01 Edu 
+          11       44       44    COVID          4.293E-01 Age 
+          22T      22       22    No_Bias        2.563E-01 - 
+          23T      22       22    COVID          2.914E-01 - 
+           3     2072     2072    COVID          6.130E-01 Gender 
+           6      671      671    COVID          5.229E-01 Race :ItalyScore
+          12      513      513    COVID          5.010E-01 FieldOfStudy 
+          24T     123      123    Non_COVID      5.795E-01 FieldOfStudy 
+          25T     390      390    COVID          4.303E-01 FieldOfStudy 
+          13      158      158    COVID          5.768E-01 ItalyScore 
+          26T      34       34    Non_COVID      2.498E-01 - 
+          27T     124      124    COVID          4.242E-01 Political :FieldOfStudy
+           7     1401     1401    Non_COVID      6.193E-01 Race :FieldOfStudy
+          14      233      233    Non_COVID      4.156E-01 FieldOfStudy 
+          28T     145      145    No_Bias        2.683E-01 Weekday 
+          29T      88       88    Non_COVID      2.318E-01 SocialStatus 
+          15     1168     1168    COVID          6.138E-01 Gender 
+          30T    1132     1132    COVID          5.966E-01 Political :ItalyScore
+          31T      36       36    Non_COVID      2.261E-01 - 
+  
+ Number of terminal nodes of final tree: 12
+ Total number of nodes of final tree: 23
+ Second best split variable (based on curvature test) at root node is Race
+  
+ Classification tree:
+ For categorical variable splits, values not in training data go to the right
+  
+ Node 1: UKScore <= -.10366476
+   Node 2: Weekday in (-4, 0)
+     Node 4: Non_COVID
+   Node 2: Weekday not in (-4, 0) or NA
+     Node 5: Edu <= 5.5000000
+       Node 10: Non_COVID
+     Node 5: Edu > 5.5000000 or NA
+       Node 11: Age <= 37.000000
+         Node 22: No_Bias
+       Node 11: Age > 37.000000 or NA
+         Node 23: COVID
+ Node 1: UKScore > -.10366476 or NA
+   Node 3: Gender = "Male"
+     Node 6: Race = "Asian", "White"
+       Node 12: FieldOfStudy = "11", "14", "6"
+         Node 24: Non_COVID
+       Node 12: FieldOfStudy /= "11", "14", "6"
+         Node 25: COVID
+     Node 6: Race /= "Asian", "White"
+       Node 13: ItalyScore <= .44362665
+         Node 26: Non_COVID
+       Node 13: ItalyScore > .44362665 or NA
+         Node 27: COVID
+   Node 3: Gender /= "Male"
+     Node 7: Race = "Asian", "NA"
+       Node 14: FieldOfStudy = "1", "12", "13", "15", "2", "4", "8", "NA"
+         Node 28: No_Bias
+       Node 14: FieldOfStudy /= "1", "12", "13", "15", "2", "4", "8", "NA"
+         Node 29: Non_COVID
+     Node 7: Race /= "Asian", "NA"
+       Node 15: Gender = "Female"
+         Node 30: COVID
+       Node 15: Gender /= "Female"
+         Node 31: Non_COVID
+ 
+ ***************************************************************
+ 
+ Predictor means below are means of cases with no missing values.
+  
+Node 1: Intermediate node
+ A case goes into Node 2 if UKScore <= -.10366476
+ UKScore mean = .12590376
+     Class      Number   Posterior
+ COVID             252  0.3333E+00
+ No_Bias          1946  0.3333E+00
+ Non_COVID          55  0.3333E+00
+ Number of training cases misclassified = 2001
+ Predicted class is COVID
+ ----------------------------
+Node 2: Intermediate node
+ A case goes into Node 4 if Weekday in (-4, 0)
+ Weekday mean = 3.2983425
+     Class      Number   Posterior
+ COVID              12  0.1448E+00
+ No_Bias           158  0.2469E+00
+ Non_COVID          11  0.6083E+00
+ Number of training cases misclassified = 170
+ Predicted class is Non_COVID
+ ----------------------------
+Node 4: Terminal node
+     Class      Number   Posterior
+ COVID               5  0.1057E+00
+ No_Bias            79  0.2163E+00
+ Non_COVID           7  0.6780E+00
+ Number of training cases misclassified = 84
+ Predicted class is Non_COVID
+ ----------------------------
+Node 5: Intermediate node
+ A case goes into Node 10 if Edu <= 5.5000000
+ Edu mean = 6.3529412
+     Class      Number   Posterior
+ COVID               7  0.1969E+00
+ No_Bias            79  0.2877E+00
+ Non_COVID           4  0.5154E+00
+ Number of training cases misclassified = 86
+ Predicted class is Non_COVID
+ ----------------------------
+Node 10: Terminal node
+     Class      Number   Posterior
+ COVID               1  0.4059E-01
+ No_Bias            41  0.2155E+00
+ Non_COVID           4  0.7439E+00
+ Number of training cases misclassified = 42
+ Predicted class is Non_COVID
+ ----------------------------
+Node 11: Intermediate node
+ A case goes into Node 22 if Age <= 37.000000
+ Age mean = 36.547619
+     Class      Number   Posterior
+ COVID               6  0.5493E+00
+ No_Bias            38  0.4505E+00
+ Non_COVID           0  0.1479E-03
+ Number of training cases misclassified = 38
+ Predicted class is COVID
+ ----------------------------
+Node 22: Terminal node
+     Class      Number   Posterior
+ COVID               1  0.2689E+00
+ No_Bias            21  0.7310E+00
+ Non_COVID           0  0.1479E-03
+ Number of training cases misclassified = 1
+ Predicted class is No_Bias
+ ----------------------------
+Node 23: Terminal node
+     Class      Number   Posterior
+ COVID               5  0.6941E+00
+ No_Bias            17  0.3057E+00
+ Non_COVID           0  0.1479E-03
+ Number of training cases misclassified = 17
+ Predicted class is COVID
+ ----------------------------
+Node 3: Intermediate node
+ A case goes into Node 6 if Gender = "Male"
+ Gender mode = "Female"
+     Class      Number   Posterior
+ COVID             240  0.3565E+00
+ No_Bias          1788  0.3440E+00
+ Non_COVID          44  0.2995E+00
+ Number of training cases misclassified = 1832
+ Predicted class is COVID
+ ----------------------------
+Node 6: Intermediate node
+ A case goes into Node 12 if Race = "Asian", "White"
+ Race mode = "White"
+     Class      Number   Posterior
+ COVID              91  0.4511E+00
+ No_Bias           572  0.3672E+00
+ Non_COVID           8  0.1817E+00
+ Number of training cases misclassified = 580
+ Predicted class is COVID
+ ----------------------------
+Node 12: Intermediate node
+ A case goes into Node 24 if FieldOfStudy = "11", "14", "6"
+ FieldOfStudy mode = "2"
+     Class      Number   Posterior
+ COVID              68  0.4741E+00
+ No_Bias           441  0.3981E+00
+ Non_COVID           4  0.1278E+00
+ Number of training cases misclassified = 445
+ Predicted class is COVID
+ ----------------------------
+Node 24: Terminal node
+     Class      Number   Posterior
+ COVID              15  0.3205E+00
+ No_Bias           104  0.2878E+00
+ Non_COVID           4  0.3917E+00
+ Number of training cases misclassified = 119
+ Predicted class is Non_COVID
+ ----------------------------
+Node 25: Terminal node
+     Class      Number   Posterior
+ COVID              53  0.5483E+00
+ No_Bias           337  0.4515E+00
+ Non_COVID           0  0.1479E-03
+ Number of training cases misclassified = 337
+ Predicted class is COVID
+ ----------------------------
+Node 13: Intermediate node
+ A case goes into Node 26 if ItalyScore <= .44362665
+ ItalyScore mean = .13409382
+     Class      Number   Posterior
+ COVID              23  0.3946E+00
+ No_Bias           131  0.2910E+00
+ Non_COVID           4  0.3144E+00
+ Number of training cases misclassified = 135
+ Predicted class is COVID
+ ----------------------------
+Node 26: Terminal node
+     Class      Number   Posterior
+ COVID               1  0.5368E-01
+ No_Bias            30  0.2085E+00
+ Non_COVID           3  0.7378E+00
+ Number of training cases misclassified = 31
+ Predicted class is Non_COVID
+ ----------------------------
+Node 27: Terminal node
+     Class      Number   Posterior
+ COVID              22  0.5547E+00
+ No_Bias           101  0.3298E+00
+ Non_COVID           1  0.1155E+00
+ Number of training cases misclassified = 102
+ Predicted class is COVID
+ ----------------------------
+Node 7: Intermediate node
+ A case goes into Node 14 if Race = "Asian", "NA"
+ Race mode = "White"
+     Class      Number   Posterior
+ COVID             149  0.3161E+00
+ No_Bias          1216  0.3340E+00
+ Non_COVID          36  0.3499E+00
+ Number of training cases misclassified = 1365
+ Predicted class is Non_COVID
+ ----------------------------
+Node 14: Intermediate node
+ A case goes into Node 28 if FieldOfStudy = "1", "12", "13", "15", "2", "4", "8", "NA"
+ FieldOfStudy mode = "11"
+     Class      Number   Posterior
+ COVID              16  0.1641E+00
+ No_Bias           205  0.2722E+00
+ Non_COVID          12  0.5638E+00
+ Number of training cases misclassified = 221
+ Predicted class is Non_COVID
+ ----------------------------
+Node 28: Terminal node
+     Class      Number   Posterior
+ COVID               7  0.2815E+00
+ No_Bias           138  0.7184E+00
+ Non_COVID           0  0.1479E-03
+ Number of training cases misclassified = 7
+ Predicted class is No_Bias
+ ----------------------------
+Node 29: Terminal node
+     Class      Number   Posterior
+ COVID               9  0.1239E+00
+ No_Bias            67  0.1194E+00
+ Non_COVID          12  0.7567E+00
+ Number of training cases misclassified = 76
+ Predicted class is Non_COVID
+ ----------------------------
+Node 15: Intermediate node
+ A case goes into Node 30 if Gender = "Female"
+ Gender mode = "Female"
+     Class      Number   Posterior
+ COVID             133  0.3557E+00
+ No_Bias          1011  0.3502E+00
+ Non_COVID          24  0.2941E+00
+ Number of training cases misclassified = 1035
+ Predicted class is COVID
+ ----------------------------
+Node 30: Terminal node
+     Class      Number   Posterior
+ COVID             133  0.3737E+00
+ No_Bias           978  0.3559E+00
+ Non_COVID          21  0.2704E+00
+ Number of training cases misclassified = 999
+ Predicted class is COVID
+ ----------------------------
+Node 31: Terminal node
+     Class      Number   Posterior
+ COVID               0  0.1479E-03
+ No_Bias            33  0.2372E+00
+ Non_COVID           3  0.7626E+00
+ Number of training cases misclassified = 33
+ Predicted class is Non_COVID
+ ----------------------------
+ ******************************************************
+ Variables used for splitting:
+ Age
+ Edu
+ FieldOfStudy
+ Gender
+ ItalyScore
+ Race
+ UKScore
+ Weekday
+ 
+ Number of terminal nodes: 12
+ 
+ Scaled importance scores of predictor variables
+      Score     Rank  Variable
+  7.268E-01     1.00  Gender
+  6.666E-01     2.00  UKScore
+  6.662E-01     3.00  Race
+  6.246E-01     4.00  Political
+  5.219E-01     5.00  ItalyScore
+  4.742E-01     6.00  FieldOfStudy
+  3.542E-01     7.00  Age
+  2.294E-01     8.00  Weekday
+  1.612E-01     9.00  ChinaScore
+  6.239E-02    10.00  SocialStatus
+  4.992E-02    11.00  Religious
+  4.522E-02    12.00  Edu
+ 
+ No important variables
+ LaTeX code for tree is in out.tex
+ Importance scores are stored in fit.txt
+ Elapsed time in seconds: 31.727

@@ -1,0 +1,30 @@
+ \documentclass[12pt]{article}
+ %File creation date: 11/29/20  at 18:18
+ \usepackage{pstricks,pst-node,pst-tree}
+ \usepackage{geometry}
+ \usepackage{lscape}
+ \definecolor{wheat}{rgb}{0.96, 0.87, 0.7}
+ \definecolor{lightgray}{rgb}{0.9, 0.9, 0.9}
+ \definecolor{aqua}{rgb}{0.0, 1.0, 1.0}
+ \definecolor{mauve}{rgb}{0.88, 0.69, 1.0}
+ \definecolor{skyblue}{RGB}{86,180,233}
+ \definecolor{vermillion}{RGB}{213,94,0}
+ \definecolor{purple}{RGB}{204,121,167}
+ \definecolor{bluishgreen}{RGB}{0,158,115}
+ \pagestyle{empty}
+ \begin{document}
+ %\begin{landscape}
+ \begin{center}
+\psset{linecolor=black,tnsep=1pt,tndepth=0cm,tnheight=0cm,treesep=2.0cm,levelsep=55pt,radius=10pt}
+    \Tcircle[fillcolor=purple,fillstyle=solid]{ 1 }~{\shortstack[c]{\emph{2253}\\ 0.18}}
+ \end{center}
+GUIDE v.36.0 0.00-SE
+least-squares multiple linear regression tree
+for predicting \texttt{\detokenize{USAScore}}.
+ Tree constructed with 2253 observations
+ (excluding observations with non-positive weight or missing values
+ in \texttt{D}, \texttt{T}, \texttt{R} or \texttt{Z} variables) has no splits.
+ Maximum number of split levels is 12 and minimum node sample size is 35.
+ Best split variable is \texttt{\detokenize{UKScore}}.
+ %\end{landscape}
+ \end{document}

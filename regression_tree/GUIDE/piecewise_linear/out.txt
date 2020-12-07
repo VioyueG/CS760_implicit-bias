@@ -1,0 +1,211 @@
+             GGG   U   U  I  DDDD   EEEE
+            G   G  U   U  I  D   D  E
+            G      U   U  I  D   D  E
+            G  GG  U   U  I  D   D  EEE
+            G   G  U   U  I  D   D  E
+            G   G  U   U  I  D   D  E
+             GGG    UUU   I  DDDD   EEEE
+   
+ GUIDE Classification and Regression Trees and Forests
+ Version 36.0 (Build date: September 23, 2020)     
+ Compiled with GFortran 5.0 on macOS High Sierra 10.13.6               
+ Copyright (c) 1997-2029 Wei-Yin Loh. All rights reserved.
+ This software is based upon work supported by the U.S. Army Research Office,
+ the National Science Foundation and the National Institutes of Health.
+  
+ This job was started on 11/29/20 at 18:18
+  
+ Least squares regression tree
+ Predictions truncated at global min. and max. of D sample values
+ Pruning by cross-validation
+ Data description file: first.dsc
+ Training sample file: first.rdata
+ Missing value code: NA
+ Records in data file start on line 2
+ D variable is USAScore
+ Piecewise linear model
+ Number of records in data file: 2365
+ Length of longest entry in data file: 21
+ Missing values found in D variable
+ Missing values found among categorical variables
+ Separate categories will be created for missing categorical variables
+ Missing values found among non-categorical variables
+ Number of dummy variables created: 24
+  
+ Summary information for training sample of size 2253 (excluding observations
+ with non-positive weight or missing values in d, e, t, r or z variables)
+ d=dependent, b=split and fit cat variable using indicator variables,
+ c=split-only categorical, i=fit-only categorical (via indicators),
+ s=split-only numerical, n=split and fit numerical, f=fit-only numerical,
+ m=missing-value flag variable, p=periodic variable, w=weight
+                                                           #Codes/           
+                                                           Levels/           
+  Column  Name                     Minimum      Maximum    Periods   #Missing
+       1  Weekday             p    0.000        6.000                 7
+       2  FieldOfStudy        b                                 15      135
+       3  Race                b                                  4       63
+       4  Age                 n   1.0000E+01    150.0                    43
+       5  Gender              b                                  2       68
+       6  Edu                 n   1.0000E+00    14.00                   135
+       7  Political           b                                  3      221
+       8  SocialStatus        n   1.0000E+00    10.00                    35
+       9  Religious           n   1.0000E+00    4.000                    71
+      10  USAScore            d   -1.382        1.426    
+      11  UKScore             n  -8.8678E-01    1.134                  1596
+      12  ItalyScore          n  -1.0318E+00    1.482                  1559
+      13  ChinaScore          n  -1.2925E+00    1.300                  1520
+   =================== Constructed variables ===================
+      14  FieldOfStudy.10     f    0.000        1.000    
+      15  FieldOfStudy.11     f    0.000        1.000    
+      16  FieldOfStudy.12     f    0.000        1.000    
+      17  FieldOfStudy.13     f    0.000        1.000    
+      18  FieldOfStudy.14     f    0.000        1.000    
+      19  FieldOfStudy.15     f    0.000        1.000    
+      20  FieldOfStudy.2      f    0.000        1.000    
+      21  FieldOfStudy.3      f    0.000        1.000    
+      22  FieldOfStudy.4      f    0.000        1.000    
+      23  FieldOfStudy.5      f    0.000        1.000    
+      24  FieldOfStudy.6      f    0.000        1.000    
+      25  FieldOfStudy.7      f    0.000        1.000    
+      26  FieldOfStudy.8      f    0.000        1.000    
+      27  FieldOfStudy.9      f    0.000        1.000    
+      28  FieldOfStudy.NA     f    0.000        1.000    
+      29  Race.Black          f    0.000        1.000    
+      30  Race.NA             f    0.000        1.000    
+      31  Race.Other          f    0.000        1.000    
+      32  Race.White          f    0.000        1.000    
+      33  Gender.Male         f    0.000        1.000    
+      34  Gender.NA           f    0.000        1.000    
+      35  Political.Moderate  f    0.000        1.000    
+      36  Political.NA        f    0.000        1.000    
+      37  Political.Right     f    0.000        1.000    
+  
+      Total  #cases w/   #missing
+     #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var
+       2365        112       2365        0        7        0        0
+     #P-var   #M-var   #B-var   #C-var   #I-var
+          1        0        4        0        0
+ No weight variable in data file
+ Number of cases used for training: 2253
+ Number of split variables: 11
+ Number of dummy variables created: 24
+ Number of cases excluded due to 0 weight or missing D: 112
+  
+ Missing values imputed with node means for fitting regression models in nodes
+ Pruning by v-fold cross-validation, with v = 10
+ Selected tree is based on mean of CV estimates
+ Number of SE's for pruned tree: .000
+  
+ Nodewise interaction tests on all variables
+ Split values for N and S variables based on exhaustive search
+ Maximum number of split levels: 12
+ Minimum node sample size: 35
+ 150 bootstrap calibration replicates
+ Scaling for N variables after bootstrap calibration: 1.000
+ Top-ranked variables and chi-squared values at root node
+      1  0.3633E+01   Weekday
+      2  0.2680E+01   UKScore
+      3  0.9595E+00   Gender
+      4  0.6266E+00   ItalyScore
+      5  0.5188E+00   Religious
+      6  0.4646E+00   Age
+      7  0.3511E+00   Edu
+      8  0.3268E+00   ChinaScore
+      9  0.2606E-01   FieldOfStudy
+     10  0.1552E-01   Political
+     11  0.2729E-03   Race
+     12  0.1972E-03   SocialStatus
+
+ Size and CV MSE and SE of subtrees:
+  Tree   #Tnodes  Mean MSE   SE(Mean)    BSE(Mean)  Median MSE  BSE(Median)
+    1       31   2.927E-01   9.859E-03   8.725E-03   2.833E-01   9.763E-03
+    2       30   2.893E-01   9.786E-03   7.472E-03   2.835E-01   7.474E-03
+    3       29   2.880E-01   9.770E-03   6.729E-03   2.835E-01   7.376E-03
+    4       27   2.869E-01   9.666E-03   6.174E-03   2.835E-01   6.659E-03
+    5       26   2.850E-01   9.609E-03   5.286E-03   2.831E-01   6.476E-03
+    6       23   2.801E-01   9.421E-03   5.581E-03   2.831E-01   5.132E-03
+    7       21   2.771E-01   9.311E-03   5.598E-03   2.780E-01   5.773E-03
+    8       19   2.723E-01   9.135E-03   7.063E-03   2.780E-01   6.872E-03
+    9       18   2.681E-01   8.979E-03   7.454E-03   2.780E-01   1.018E-02
+   10       17   2.606E-01   8.727E-03   7.390E-03   2.537E-01   1.031E-02
+   11       16   2.526E-01   8.538E-03   6.920E-03   2.500E-01   7.473E-03
+   12       15   2.424E-01   8.314E-03   6.650E-03   2.365E-01   7.857E-03
+   13        9   2.218E-01   7.360E-03   3.986E-03   2.209E-01   4.414E-03
+   14        8   1.973E-01   6.604E-03   7.107E-03   2.014E-01   8.846E-03
+   15**      1   1.557E-01   4.754E-03   3.785E-03   1.556E-01   3.349E-03
+  
+ 0-SE tree based on mean is marked with * and has 1 terminal node
+ 0-SE tree based on median is marked with + and has 1 terminal node
+ Selected-SE tree based on mean using naive SE is marked with **
+ Selected-SE tree based on mean using bootstrap SE is marked with --
+ Selected-SE tree based on median and bootstrap SE is marked with ++
+ * tree, ** tree, + tree, and ++ tree all the same
+  
+ Following tree is based on mean CV with naive SE estimate (*).
+  
+ Structure of final tree. Each terminal node is marked with a T.
+  
+ D-mean is mean of USAScore in the node
+ Cases fit give the number of cases used to fit node
+ MSE and R^2 are based on all cases in node
+        Node    Total    Cases Matrix    Node      Node      Node  Split           Other
+        label   cases      fit  rank    D-mean     MSE       R^2   variable        variables
+           1T    2253     2253    32  1.778E-01  1.533E-01  0.0487 UKScore 
+ Best split at root node is UKScore <= .60502 or NA
+  
+ Number of terminal nodes of final tree: 1
+ Total number of nodes of final tree: 1
+ Best split variable (based on curvature test) at root node is UKScore
+  
+ Regression tree:
+  
+ Node 1: USAScore-mean = .17782803
+ 
+ ***************************************************************
+ 
+ Predictor means below are means of cases with no missing values.
+ Regression coefficients are computed from the complete cases.
+  
+Node 1: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor             Coefficient  t-stat      p-value      Minimum         Mean       Maximum
+ Constant            -0.47370E-01 -0.84662      0.39730    
+ Age                  0.19518E-02   2.6131      0.90329E-02   10.000       29.457       150.00    
+ Edu                 -0.64308E-02  -1.5584      0.11929       1.0000       6.5873       14.000    
+ SocialStatus         0.23570E-02  0.42350      0.67197       1.0000       6.1429       10.000    
+ Religious            0.18123E-01   1.9199      0.54997E-01   1.0000       1.9702       4.0000    
+ UKScore              0.16290       4.0039      0.64345E-04 -0.88678      0.12590       1.1340    
+ ItalyScore           0.91752E-01   2.4763      0.13350E-01  -1.0318      0.48870E-01   1.4819    
+ ChinaScore           0.30063E-02  0.84900E-01  0.93235      -1.2925     -0.67962E-04   1.2997    
+ FieldOfStudy.10      0.12181       2.2430      0.24992E-01   0.0000      0.35064E-01   1.0000    
+ FieldOfStudy.11     -0.69500E-02 -0.17759      0.85906       0.0000      0.12339       1.0000    
+ FieldOfStudy.12      0.89011E-01   2.0649      0.39046E-01   0.0000      0.79450E-01   1.0000    
+ FieldOfStudy.13      0.18635E-01  0.29343      0.76922       0.0000      0.22636E-01   1.0000    
+ FieldOfStudy.14      0.60987E-02  0.14090      0.88796       0.0000      0.77674E-01   1.0000    
+ FieldOfStudy.15     -0.50181E-02 -0.92753E-01  0.92611       0.0000      0.35952E-01   1.0000    
+ FieldOfStudy.2       0.72258E-01   1.8029      0.71538E-01   0.0000      0.11451       1.0000    
+ FieldOfStudy.3       0.13286       2.0360      0.41867E-01   0.0000      0.20861E-01   1.0000    
+ FieldOfStudy.4       0.44309E-01  0.87317      0.38267       0.0000      0.44385E-01   1.0000    
+ FieldOfStudy.5       0.49737E-01   1.1032      0.27007       0.0000      0.68353E-01   1.0000    
+ FieldOfStudy.6       0.64736E-01   1.3623      0.17325       0.0000      0.55925E-01   1.0000    
+ FieldOfStudy.7      -0.56073E-01 -0.94090      0.34686       0.0000      0.27075E-01   1.0000    
+ FieldOfStudy.8       0.37861E-01  0.95289      0.34075       0.0000      0.11407       1.0000    
+ FieldOfStudy.9      -0.53763E-01  -1.1050      0.26927       0.0000      0.49711E-01   1.0000    
+ FieldOfStudy.NA      0.60898E-02  0.12754      0.89852       0.0000      0.59920E-01   1.0000    
+ Gender.Male          0.14613E-01  0.76009      0.44728       0.0000      0.32978       1.0000    
+ Gender.NA           -0.57624E-01  -1.0949      0.27367       0.0000      0.30182E-01   1.0000    
+ Political.Moderate   0.36770E-01   1.8652      0.62281E-01   0.0000      0.36352       1.0000    
+ Political.NA         0.55380E-01   1.8092      0.70548E-01   0.0000      0.98091E-01   1.0000    
+ Political.Right      0.10658       3.2549      0.11512E-02   0.0000      0.92765E-01   1.0000    
+ Race.Black           0.12673       3.2004      0.13920E-02   0.0000      0.69685E-01   1.0000    
+ Race.NA              0.10003       1.6958      0.90057E-01   0.0000      0.27963E-01   1.0000    
+ Race.Other           0.58663E-01   1.8431      0.65444E-01   0.0000      0.14336       1.0000    
+ Race.White           0.82176E-01   3.2188      0.13059E-02   0.0000      0.62494       1.0000    
+ USAScore mean = .177828
+ Predicted values truncated at -1.38177 & 1.42588
+ ----------------------------
+ Proportion of variance (R-squared) explained by tree model: 0.0487
+ 
+ Observed and fitted values are stored in fit.txt
+ LaTeX code for tree is in out.tex
+ Elapsed time in seconds: 3.2259

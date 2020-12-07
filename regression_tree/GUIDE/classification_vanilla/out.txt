@@ -1,0 +1,279 @@
+             GGG   U   U  I  DDDD   EEEE
+            G   G  U   U  I  D   D  E
+            G      U   U  I  D   D  E
+            G  GG  U   U  I  D   D  EEE
+            G   G  U   U  I  D   D  E
+            G   G  U   U  I  D   D  E
+             GGG    UUU   I  DDDD   EEEE
+   
+ GUIDE Classification and Regression Trees and Forests
+ Version 36.0 (Build date: September 23, 2020)     
+ Compiled with GFortran 5.0 on macOS High Sierra 10.13.6               
+ Copyright (c) 1997-2029 Wei-Yin Loh. All rights reserved.
+ This software is based upon work supported by the U.S. Army Research Office,
+ the National Science Foundation and the National Institutes of Health.
+  
+ This job was started on 11/29/20 at 18:26
+  
+ Classification tree
+ Pruning by cross-validation
+ Data description file: first.dsc
+ Training sample file: first.rdata
+ Missing value code: NA
+ Records in data file start on line 2
+ 7 N variables changed to S
+ Warning: B variables changed to C
+ D variable is USAScore
+ Number of records in data file: 2365
+ Length of longest entry in data file: 21
+ Missing values found in D variable
+ Missing values found among categorical variables
+ Separate categories will be created for missing categorical variables
+ Missing values found among non-categorical variables
+ Number of classes: 3
+ Training sample class proportions of D variable USAScore:
+     Class  #Cases     Proportion
+ COVID         252     0.11185087
+ No_Bias      1946     0.86373724
+ Non_COVID      55     0.02441190
+  
+ Summary information for training sample of size 2253 (excluding observations
+ with non-positive weight or missing values in d, e, t, r or z variables)
+ d=dependent, b=split and fit cat variable using indicator variables,
+ c=split-only categorical, i=fit-only categorical (via indicators),
+ s=split-only numerical, n=split and fit numerical, f=fit-only numerical,
+ m=missing-value flag variable, p=periodic variable, w=weight
+                                                     #Codes/           
+                                                     Levels/           
+  Column  Name               Minimum      Maximum    Periods   #Missing
+       1  Weekday       p    0.000        6.000                 7
+       2  FieldOfStudy  c                                 15      135
+       3  Race          c                                  4       63
+       4  Age           s    10.00        150.0                    43
+       5  Gender        c                                  2       68
+       6  Edu           s    1.000        14.00                   135
+       7  Political     c                                  3      221
+       8  SocialStatus  s    1.000        10.00                    35
+       9  Religious     s    1.000        4.000                    71
+      10  USAScore      d                                  3
+      11  UKScore       s  -0.8868        1.134                  1596
+      12  ItalyScore    s   -1.032        1.482                  1559
+      13  ChinaScore    s   -1.292        1.300                  1520
+  
+      Total  #cases w/   #missing
+     #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var
+       2365        112       2365        0        0        0        7
+     #P-var   #M-var   #B-var   #C-var   #I-var
+          1        0        0        4        0
+ Number of cases used for training: 2253
+ Number of split variables: 11
+ Number of cases excluded due to 0 weight or missing D: 112
+  
+ Pruning by v-fold cross-validation, with v = 10
+ Selected tree is based on mean of CV estimates
+ Number of SE's for pruned tree: .5000
+  
+ Simple node models
+ Equal priors
+ Unit misclassification costs
+ Univariate split highest priority
+ Interaction and linear splits 2nd and 3rd priorities
+ Split values for N and S variables based on exhaustive search
+ Maximum number of split levels: 12
+ Minimum node sample size: 22
+ Top-ranked variables and chi-squared values at root node
+      1  0.1068E+02   UKScore
+      2  0.6728E+01   Race
+      3  0.6643E+01   Political
+      4  0.6046E+01   Gender
+      5  0.5396E+01   FieldOfStudy
+      6  0.4158E+01   Age
+      7  0.1769E+01   Weekday
+      8  0.1102E+01   ChinaScore
+      9  0.5015E+00   Religious
+     10  0.4463E+00   ItalyScore
+     11  0.1586E-01   Edu
+     12  0.6633E-02   SocialStatus
+
+ Size and CV mean cost and SE of subtrees:
+  Tree   #Tnodes  Mean Cost   SE(Mean)   BSE(Mean)  Median Cost  BSE(Median)
+    1+       9   6.159E-01   3.457E-02   1.697E-02   6.042E-01   3.078E-02
+    2        8   6.245E-01   3.382E-02   1.766E-02   6.377E-01   3.145E-02
+    3**      6   6.120E-01   3.300E-02   1.550E-02   6.121E-01   1.948E-02
+    4        4   6.470E-01   3.204E-02   1.681E-02   6.370E-01   2.632E-02
+    5        2   6.445E-01   3.678E-02   1.972E-02   6.408E-01   2.268E-02
+    6        1   6.667E-01   4.710E-02   3.160E-16   6.667E-01   6.063E-16
+  
+ 0-SE tree based on mean is marked with * and has 6 terminal nodes
+ 0-SE tree based on median is marked with + and has 9 terminal nodes
+ Selected-SE tree based on mean using naive SE is marked with **
+ Selected-SE tree based on mean using bootstrap SE is marked with --
+ Selected-SE tree based on median and bootstrap SE is marked with ++
+ ** tree same as ++ tree
+ ** tree same as -- tree
+ ++ tree same as -- tree
+ * tree same as ** tree
+ * tree same as ++ tree
+ * tree same as -- tree
+  
+ Following tree is based on mean CV with naive SE estimate (**).
+  
+ Structure of final tree. Each terminal node is marked with a T.
+  
+ Node cost is node misclassification cost divided by number of training cases
+        Node    Total    Train    Predicted        Node    Split          Interacting
+       label    cases    cases    class            cost    variables      variable
+           1     2253     2253    COVID          6.351E-01 UKScore 
+           2T     181      181    Non_COVID      3.732E-01 Weekday 
+           3     2072     2072    COVID          6.130E-01 Gender 
+           6T     671      671    COVID          5.229E-01 Race :ItalyScore
+           7     1401     1401    Non_COVID      6.193E-01 Race :FieldOfStudy
+          14T     233      233    Non_COVID      4.156E-01 - 
+          15     1168     1168    COVID          6.138E-01 Gender 
+          30     1132     1132    COVID          5.966E-01 Political :ItalyScore
+          60T     582      582    Non_COVID      5.999E-01 - 
+          61T     550      550    COVID          5.062E-01 - 
+          31T      36       36    Non_COVID      2.261E-01 - 
+  
+ Number of terminal nodes of final tree: 6
+ Total number of nodes of final tree: 11
+ Second best split variable (based on curvature test) at root node is Race
+  
+ Classification tree:
+ For categorical variable splits, values not in training data go to the right
+  
+ Node 1: UKScore <= -.10366476
+   Node 2: Non_COVID
+ Node 1: UKScore > -.10366476 or NA
+   Node 3: Gender = "Male"
+     Node 6: COVID
+   Node 3: Gender /= "Male"
+     Node 7: Race = "Asian", "NA"
+       Node 14: Non_COVID
+     Node 7: Race /= "Asian", "NA"
+       Node 15: Gender = "Female"
+         Node 30: Political = "Left"
+           Node 60: Non_COVID
+         Node 30: Political /= "Left"
+           Node 61: COVID
+       Node 15: Gender /= "Female"
+         Node 31: Non_COVID
+ 
+ ***************************************************************
+ 
+ Predictor means below are means of cases with no missing values.
+  
+Node 1: Intermediate node
+ A case goes into Node 2 if UKScore <= -.10366476
+ UKScore mean = .12590376
+     Class      Number   Posterior
+ COVID             252  0.3333E+00
+ No_Bias          1946  0.3333E+00
+ Non_COVID          55  0.3333E+00
+ Number of training cases misclassified = 2001
+ Predicted class is COVID
+ ----------------------------
+Node 2: Terminal node
+     Class      Number   Posterior
+ COVID              12  0.1448E+00
+ No_Bias           158  0.2469E+00
+ Non_COVID          11  0.6083E+00
+ Number of training cases misclassified = 170
+ Predicted class is Non_COVID
+ ----------------------------
+Node 3: Intermediate node
+ A case goes into Node 6 if Gender = "Male"
+ Gender mode = "Female"
+     Class      Number   Posterior
+ COVID             240  0.3565E+00
+ No_Bias          1788  0.3440E+00
+ Non_COVID          44  0.2995E+00
+ Number of training cases misclassified = 1832
+ Predicted class is COVID
+ ----------------------------
+Node 6: Terminal node
+     Class      Number   Posterior
+ COVID              91  0.4511E+00
+ No_Bias           572  0.3672E+00
+ Non_COVID           8  0.1817E+00
+ Number of training cases misclassified = 580
+ Predicted class is COVID
+ ----------------------------
+Node 7: Intermediate node
+ A case goes into Node 14 if Race = "Asian", "NA"
+ Race mode = "White"
+     Class      Number   Posterior
+ COVID             149  0.3161E+00
+ No_Bias          1216  0.3340E+00
+ Non_COVID          36  0.3499E+00
+ Number of training cases misclassified = 1365
+ Predicted class is Non_COVID
+ ----------------------------
+Node 14: Terminal node
+     Class      Number   Posterior
+ COVID              16  0.1641E+00
+ No_Bias           205  0.2722E+00
+ Non_COVID          12  0.5638E+00
+ Number of training cases misclassified = 221
+ Predicted class is Non_COVID
+ ----------------------------
+Node 15: Intermediate node
+ A case goes into Node 30 if Gender = "Female"
+ Gender mode = "Female"
+     Class      Number   Posterior
+ COVID             133  0.3557E+00
+ No_Bias          1011  0.3502E+00
+ Non_COVID          24  0.2941E+00
+ Number of training cases misclassified = 1035
+ Predicted class is COVID
+ ----------------------------
+Node 30: Intermediate node
+ A case goes into Node 60 if Political = "Left"
+ Political mode = "Left"
+     Class      Number   Posterior
+ COVID             133  0.3737E+00
+ No_Bias           978  0.3559E+00
+ Non_COVID          21  0.2704E+00
+ Number of training cases misclassified = 999
+ Predicted class is COVID
+ ----------------------------
+Node 60: Terminal node
+     Class      Number   Posterior
+ COVID              59  0.2980E+00
+ No_Bias           507  0.3316E+00
+ Non_COVID          16  0.3703E+00
+ Number of training cases misclassified = 566
+ Predicted class is Non_COVID
+ ----------------------------
+Node 61: Terminal node
+     Class      Number   Posterior
+ COVID              74  0.4686E+00
+ No_Bias           471  0.3863E+00
+ Non_COVID           5  0.1451E+00
+ Number of training cases misclassified = 476
+ Predicted class is COVID
+ ----------------------------
+Node 31: Terminal node
+     Class      Number   Posterior
+ COVID               0  0.1479E-03
+ No_Bias            33  0.2372E+00
+ Non_COVID           3  0.7626E+00
+ Number of training cases misclassified = 33
+ Predicted class is Non_COVID
+ ----------------------------
+ 
+ Classification matrix for training sample:
+ Predicted      True class
+ class          COVID   No_Bias Non_COVID
+ COVID            165      1043        13
+ No_Bias            0         0         0
+ Non_COVID         87       903        42
+ Total            252      1946        55
+ 
+ Number of cases used for tree construction: 2253
+ Number misclassified: 2046
+ Resubstitution estimate of mean misclassification cost: .52720058
+ 
+ Observed and fitted values are stored in fit.txt
+ LaTeX code for tree is in out.tex
+ Elapsed time in seconds: 1.3013

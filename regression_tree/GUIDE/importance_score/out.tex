@@ -1,0 +1,116 @@
+ \documentclass{article}
+ %File creation date: 11/29/20  at 18:24
+ \usepackage{pstricks,pst-node,pst-tree}
+ \usepackage[left=0.5in,right=0.5in,top=1in,bottom=1in]{geometry}
+ \usepackage{lscape}
+ \definecolor{wheat}{rgb}{0.96, 0.87, 0.7}
+ \definecolor{lightgray}{rgb}{0.9, 0.9, 0.9}
+ \definecolor{aqua}{rgb}{0.0, 1.0, 1.0}
+ \definecolor{mauve}{rgb}{0.88, 0.69, 1.0}
+ \definecolor{skyblue}{RGB}{86,180,233}
+ \definecolor{vermillion}{RGB}{213,94,0}
+ \definecolor{purple}{RGB}{204,121,167}
+ \definecolor{bluishgreen}{RGB}{0,158,115}
+ \pagestyle{empty}
+ \begin{document}
+ \begin{landscape}
+ \begin{center} \footnotesize
+\psset{linecolor=black,tnsep=1pt,tndepth=0cm,tnheight=0cm,treesep=.5cm,levelsep=50pt,radius=6pt}
+  \pstree[treemode=D ]{\Tcircle{ 1 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{UKScore}}\\$\leq$-0.1037}}
+    ~[tnpos=r]{\shortstack[r]{0.11\\0.86\\0.02}}}{
+  \pstree[treemode=D ]{\Tcircle[linestyle=dashed]{ 2 }
+    ~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{Weekday}}\\in (-4,0)}}
+ }{
+ \Tcircle[fillcolor=purple,fillstyle=solid]{ 4 }
+    ~[tnpos=l]{\shortstack[r]{0.05\\0.87\\0.08}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{Non_COVID}}}\\91}}
+  \pstree[treemode=D ]{\Tcircle[linestyle=dashed]{ 5 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{Edu}}\\$\leq$5.50}}
+ }{
+ \Tcircle[fillcolor=purple,fillstyle=solid]{\small 10}
+    ~[tnpos=l]{\shortstack[r]{0.02\\0.89\\0.09}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{Non_COVID}}}\\46}}
+  \pstree[treemode=D ]{\Tcircle[linestyle=dashed]{\small 11}~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{Age}}\\$\leq$37}}
+ }{
+ \Tcircle[fillcolor=orange,fillstyle=solid]{\small 22}
+    ~[tnpos=l]{\shortstack[r]{0.05\\0.95\\0.00}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{No_Bias}}}\\22}}
+ \Tcircle[fillcolor=yellow,fillstyle=solid]{\small 23}
+    ~[tnpos=r]{\shortstack[r]{0.23\\0.77\\0.00}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{COVID}}}\\22}}
+   }
+   }
+   }
+  \pstree[treemode=D ]{\Tcircle{ 3 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{Gender}}\\=\texttt{\detokenize{Male}}}}
+ }{
+  \pstree[treemode=D ]{\Tcircle[fillcolor=wheat,fillstyle=solid]{ 6 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{Race}}\\in $S_{1}$}}
+ }{
+  \pstree[treemode=D ]{\Tcircle[linestyle=dashed]{\small 12}~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{V1}}\\in $S_{2}$}}
+ }{
+ \Tcircle[fillcolor=purple,fillstyle=solid]{\small 24}
+    ~[tnpos=l]{\shortstack[r]{0.12\\0.85\\0.03}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{Non_COVID}}}\\123}}
+ \Tcircle[fillcolor=yellow,fillstyle=solid]{\small 25}
+    ~[tnpos=r]{\shortstack[r]{0.14\\0.86\\0.00}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{COVID}}}\\390}}
+   }
+  \pstree[treemode=D ]{\Tcircle[linestyle=dashed]{\small 13}~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{ItalyScore}}\\$\leq$ 0.4436}}
+ }{
+ \Tcircle[fillcolor=purple,fillstyle=solid]{\small 26}
+    ~[tnpos=l]{\shortstack[r]{0.03\\0.88\\0.09}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{Non_COVID}}}\\34}}
+ \Tcircle[fillcolor=yellow,fillstyle=solid]{\small 27}
+    ~[tnpos=r]{\shortstack[r]{0.18\\0.81\\0.01}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{COVID}}}\\124}}
+   }
+   }
+  \pstree[treemode=D ]{\Tcircle[fillcolor=wheat,fillstyle=solid]{ 7 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{Race}}\\in $S_{3}$}}
+ }{
+  \pstree[treemode=D ]{\Tcircle[linestyle=dashed]{\small 14}~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{V2}}\\in $S_{4}$}}
+ }{
+ \Tcircle[fillcolor=orange,fillstyle=solid]{\small 28}
+    ~[tnpos=l]{\shortstack[r]{0.05\\0.95\\0.00}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{No_Bias}}}\\145}}
+ \Tcircle[fillcolor=purple,fillstyle=solid]{\small 29}
+    ~[tnpos=r]{\shortstack[r]{0.10\\0.76\\0.14}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{Non_COVID}}}\\88}}
+   }
+  \pstree[treemode=D ]{\Tcircle{\small 15}~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{Gender}}\\=\texttt{\detokenize{Female}}}}
+ }{
+ \Tcircle[fillcolor=yellow,fillstyle=solid]{\small 30}
+    ~[tnpos=l]{\shortstack[r]{0.12\\0.86\\0.02}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{COVID}}}\\1132}}
+ \Tcircle[fillcolor=purple,fillstyle=solid]{\small 31}
+    ~[tnpos=r]{\shortstack[r]{0.00\\0.92\\0.08}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{Non_COVID}}}\\36}}
+ }
+ }
+ }
+ }
+ \end{center}
+GUIDE v.36.0 importance scoring
+classification tree for predicting \texttt{\detokenize{USAScore}} using
+equal priors
+and unit misclassification costs.
+ Tree constructed with 2253 observations
+ (excluding observations with non-positive weight or missing values
+ in \texttt{D}, \texttt{T}, \texttt{R} or \texttt{Z} variables).
+ Maximum number of split levels is 4 and minimum node sample size is 22.
+At each split, an observation goes to the left branch 
+ if and only if the condition is satisfied.
+\texttt{\detokenize{V1}} = \texttt{\detokenize{FieldOfStudy}}.
+\texttt{\detokenize{V2}} = \texttt{\detokenize{FieldOfStudy}}.
+ Set $S_{1}$ = \{\texttt{\detokenize{Asian}}, \texttt{\detokenize{White}}\}.
+ Set $S_{2}$ = \{\texttt{\detokenize{11}}, \texttt{\detokenize{14}},
+ \texttt{\detokenize{6}}\}.
+ Set $S_{3}$ = \{\texttt{\detokenize{Asian}}, \texttt{\detokenize{NA}}\}.
+ Set $S_{4}$ = \{\texttt{\detokenize{1}}, \texttt{\detokenize{12}},
+ \texttt{\detokenize{13}}, \texttt{\detokenize{15}}, \texttt{\detokenize{2}},
+ \texttt{\detokenize{4}}, \texttt{\detokenize{8}}, \texttt{\detokenize{NA}}\}.
+ Circles with dashed lines are nodes with no significant splits.
+ Intermediate nodes with splits due to interaction are in wheat color.
+Predicted classes and sample sizes printed below terminal nodes;
+class sample proportions for \texttt{\detokenize{USAScore}} =
+ \texttt{\detokenize{COVID}}, \texttt{\detokenize{No_Bias}}, and \texttt{\detokenize{Non_COVID}}, respectively, beside nodes.
+Second best split variable at root node is \texttt{\detokenize{Race}}.
+ \end{landscape}
+ \end{document}
